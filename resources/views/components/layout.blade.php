@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ $title }}</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+      crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url('css/style.css')}}" />
+  </head>
+  <body>
+    <div class="side_menu">
+      <div class="side_wrapper">
+        <a href="{{ route('tests.index')}}">
+          <div class="img_logo"><img src="img/logo.png" alt="ロゴ画像" /></div>
+        </a>
+        <a href="{{ route('tests.create')}}"
+          ><div class="btn_new btn_option">
+            <i class="fas fa-plus"></i><span>新規登録画面</span>
+          </div></a
+        >
+        <nav>
+          <ul>
+            <a href="{{ route('tests.index')}}"
+              ><li><i class="fas fa-home"></i>トップページ</li></a
+            >
+          </ul>
+        </nav>
+      </div>
+      <img
+        class="img_dec"
+        src="img/dec-side.png"
+        alt="ESA ACADEMY 生徒管理システム"
+      />
+    </div>
+    <main>
+      <header>
+        <div class="search">
+          <input type="text" placeholder="TEL検索" />
+          <i class="fas fa-search btn_option"></i>
+        </div>
+      </header>
+      {{ $slot }}
+    </main>
+  </body>
+</html>
