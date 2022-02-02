@@ -1,368 +1,394 @@
 @charset "UTF-8";
 body {
-  background-color: #eef7fa;
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif" !important;
-  letter-spacing: 0.1em;
+    background-color: #eef7fa;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif" !important;
+    letter-spacing: 0.1em;
 }
 
 input:focus,
 select:focus {
-  outline: solid 2px #54e0e9;
+    outline: solid 2px #54e0e9;
 }
 
 * a {
-  color: rgba(51, 51, 51, 0.831);
-  text-decoration: none;
+    color: rgba(51, 51, 51, 0.831);
+    text-decoration: none;
 }
 
 .btn_option {
-  transition: opacity 0.3s;
+    transition: opacity 0.3s;
 }
 .btn_option:hover {
-  opacity: 0.7;
-  cursor: pointer;
+    opacity: 0.7;
+    cursor: pointer;
 }
 
 .side_menu {
-  position: fixed;
-  top: 0;
-  background: linear-gradient(180deg, #7ac8e4, #54e0e9);
-  width: 16.7%;
-  height: 100vh;
-  text-align: center;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(180deg, #7ac8e4, #54e0e9);
+    width: 16.7%;
+    height: 100vh;
+    text-align: center;
 }
 
 .side_wrapper {
-  width: 75%;
-  margin: 0 auto;
-  font-weight: bold;
+    width: 75%;
+    margin: 0 auto;
+    font-weight: bold;
 }
 
 .img_logo {
-  width: 100%;
-  margin-top: 32px;
-  padding-bottom: 40px;
-  position: relative;
+    width: 100%;
+    margin-top: 32px;
+    padding-bottom: 40px;
+    position: relative;
 }
 .img_logo img {
-  width: 100%;
+    width: 100%;
 }
 .img_logo::before {
-  content: "";
-  position: absolute;
-  margin: 0 auto;
-  width: 90%;
-  bottom: 0;
-  height: 2px;
-  right: 0;
-  left: 0;
-  background: #a4e4ed;
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    width: 90%;
+    bottom: 0;
+    height: 2px;
+    right: 0;
+    left: 0;
+    background: #a4e4ed;
 }
 
 .btn_new {
-  width: 100%;
-  color: #fff;
-  font-size: 15px;
-  background: linear-gradient(90deg, #ffd56c, #ffba31);
-  box-shadow: 0 0 14px #46add2;
-  border-radius: 4px;
-  padding: 16px 0;
-  display: inline-block;
-  margin-top: 40px;
-  letter-spacing: 0.1em;
+    width: 100%;
+    color: #fff;
+    font-size: 15px;
+    background: linear-gradient(90deg, #ffd56c, #ffba31);
+    box-shadow: 0 0 14px #46add2;
+    border-radius: 4px;
+    padding: 16px 0;
+    display: inline-block;
+    margin-top: 40px;
+    letter-spacing: 0.1em;
 }
 
 .fa-plus {
-  margin-right: 4px;
-  font-size: 13px;
+    margin-right: 4px;
+    font-size: 13px;
 }
 
 .fa-home {
-  margin-right: 4px;
-  font-size: 15px;
+    margin-right: 4px;
+    font-size: 15px;
 }
 
 nav > ul a {
-  font-size: 15px;
-  display: block;
-  margin-top: 28px;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 0.1em;
+    font-size: 15px;
+    display: block;
+    margin-top: 28px;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.1em;
 }
 
 .img_dec {
-  width: 95%;
-  margin-top: 108px;
-  float: right;
+    width: 95%;
+    margin-top: 108px;
+    float: right;
 }
 
 main {
-  position: relative;
-  float: right;
-  width: 83.3%;
-  height: 100vh;
+    position: relative;
+    float: right;
+    width: 83.3%;
+    height: 100vh;
 }
 
 header {
-  position: fixed;
-  display: flex;
-  right: 0;
-  top: 0;
-  width: 83.3%;
-  height: 80px;
-  background-color: #fff;
-  box-shadow: 0 0 20px rgba(82, 182, 218, 0.21);
-  align-items: center;
-  justify-content: flex-end;
+    position: fixed;
+    display: flex;
+    right: 0;
+    top: 0;
+    width: 83.3%;
+    height: 80px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(82, 182, 218, 0.21);
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .search {
-  display: flex;
-  margin: auto 44px;
-  padding: 0 20px 0 28px;
-  width: 26.55%;
-  height: 48px;
-  border-radius: 999px;
-  background: #f0f0f0;
-  z-index: 100;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    margin: auto 44px;
+    padding: 0 20px 0 28px;
+    width: 26.55%;
+    height: 48px;
+    border-radius: 999px;
+    background: #f0f0f0;
+    z-index: 100;
+    align-items: center;
+    justify-content: space-between;
 }
 .search > input {
-  border: none;
-  vertical-align: middle;
-  background: #f0f0f0;
-  font-size: 16px;
-  border-radius: 999px;
+    border: none;
+    vertical-align: middle;
+    background: #f0f0f0;
+    font-size: 16px;
+    border-radius: 999px;
 }
 .search > input::-moz-placeholder {
-  color: #878787;
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
+    color: #878787;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
 }
 .search > input:-ms-input-placeholder {
-  color: #878787;
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
+    color: #878787;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
 }
 .search > input::placeholder {
-  color: #878787;
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
+    color: #878787;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
 }
 .search > input:focus {
-  outline: none;
+    outline: none;
 }
 
 .fa-search {
-  color: #bababa;
-  font-size: 18px;
+    color: #bababa;
+    font-size: 18px;
 }
 
 .main_wrapper {
-  width: 93%;
-  margin: 112px auto 0;
+    width: 93%;
+    margin: 112px auto 0;
 }
 
 .sum_number {
-  margin-left: 20px;
-  margin-bottom: 16px;
-  color: #b8b8b8;
+    margin-left: 20px;
+    margin-bottom: 16px;
+    color: #b8b8b8;
 }
 
 .main_content {
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  box-shadow: 0 0 20px rgba(82, 182, 218, 0.21);
-  padding: 0 32px;
-  border-radius: 8px;
-  margin-bottom: 56px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(82, 182, 218, 0.21);
+    padding: 0 32px;
+    border-radius: 8px;
+    margin-bottom: 56px;
 }
 
 tr {
-  width: 100%;
-  vertical-align: middle;
+    width: 100%;
+    vertical-align: middle;
 }
 
 table {
-  font-size: 14px;
-  letter-spacing: 0em;
+    font-size: 14px;
+    letter-spacing: 0em;
 }
 
 th {
-  letter-spacing: 0em;
-  font-weight: normal;
-  color: #52b6da;
-  text-align: left;
-  padding: 20px 0;
+    letter-spacing: 0em;
+    font-weight: normal;
+    color: #52b6da;
+    text-align: left;
+    padding: 20px 0;
 }
 th:first-child {
-  padding-left: 24px;
+    padding-left: 24px;
 }
 
 td {
-  padding: 15px 0;
-  width: 5%;
-  border-top: 2px solid #eee;
+    padding: 15px 0;
+    width: 5%;
+    border-top: 2px solid #eee;
 }
 td:first-child {
-  padding-left: 24px;
+    padding-left: 24px;
 }
 td:last-child {
-  padding-right: 24px;
+    padding-right: 24px;
 }
 td:nth-of-type(2) {
-  width: 3%;
+    width: 3%;
 }
 td:nth-of-type(5) {
-  width: 6%;
+    width: 6%;
+}
+
+button {
+    font-family:inherit;
+        font-size: 100%;
 }
 
 .btn {
-  width: 64px;
-  padding: 9px 0;
-  border-radius: 8px;
-  background-color: rgba(225, 145, 145, 0.564);
-  text-align: center;
-  font-weight: bold;
+    width: 64px;
+    padding: 9px 0;
+    border-radius: 8px;
+    background-color: rgba(225, 145, 145, 0.564);
+    text-align: center;
+    font-weight: bold;
+    border: none;
 }
 
 .delete_btn {
-  color: #ee8485;
-  background-color: #faeded;
+    color: #ee8485;
+    background-color: #faeded;
+
 }
 
 .edit_btn {
-  color: #52b6da;
-  background-color: #edf7fa;
-  margin-bottom: 10px;
+    color: #52b6da;
+    background-color: #edf7fa;
+    margin-bottom: 10px;
 }
 
 .pagers {
-  display: flex;
-  justify-content: center;
-  margin-top: 48px;
-  padding-bottom: 84px;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    padding-bottom: 84px;
 }
 
 .pager {
-  background-color: #fff;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 4px;
-  margin-right: 10px;
-  color: #bdbdbd;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 4px;
+    margin-right: 10px;
+    color: #bdbdbd;
 }
 .pager.active {
-  background-color: #ffcf5f;
-  color: #fff;
+    background-color: #ffcf5f;
+    color: #fff;
 }
 
 .next {
-  line-height: 40px;
-  color: #bdbdbd;
+    line-height: 40px;
+    color: #bdbdbd;
 }
 
 .signup_content {
-  padding: 4px 36px 90px;
+    padding: 4px 36px 90px;
 }
 .signup_content h2 {
-  color: #c2c2c2;
-  letter-spacing: 0.3em;
-  font-size: 24px;
-  padding: 0 0 20px 4px;
-  border-bottom: #ebebeb 0.5px solid;
+    color: #c2c2c2;
+    letter-spacing: 0.3em;
+    font-size: 24px;
+    padding: 0 0 20px 4px;
+    border-bottom: #ebebeb 0.5px solid;
 }
 
 form {
-  width: 98%;
-  margin: 32px auto 0;
-  display: flex;
-  flex-wrap: wrap;
-  letter-spacing: 0em;
-  justify-content: space-between;
+    width: 98%;
+    margin: 32px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    letter-spacing: 0em;
+    justify-content: space-between;
+}
+
+.destroy {
+    margin: 0;
 }
 
 .form_parts {
-  width: 100%;
-  height: 55px;
-  font-size: 15px;
-  padding: 16px 20px;
-  border-radius: 5px;
-  border: 1px solid #e3e3e3;
-  margin-bottom: 15px;
-  margin-top: 7px;
+    width: 100%;
+    height: 55px;
+    font-size: 15px;
+    padding: 16px 20px;
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
+    margin-bottom: 15px;
+    margin-top: 7px;
 }
 .form_parts::-moz-placeholder {
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
-  color: #808080;
-  font-size: 15px;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
+    color: #808080;
+    font-size: 15px;
 }
 .form_parts:-ms-input-placeholder {
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
-  color: #808080;
-  font-size: 15px;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
+    color: #808080;
+    font-size: 15px;
 }
 .form_parts::placeholder {
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
-  color: #808080;
-  font-size: 15px;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
+    color: #808080;
+    font-size: 15px;
 }
 
 select {
-  color: #bdbdbd;
-  padding: 16px 20px;
-  font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
+    color: #bdbdbd;
+    padding: 16px 20px;
+    font-family: "游ゴシック", "YuGothic", "Meiryo", "メイリオ", "Lucida Grande",
+        "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "sans-serif";
 }
 
 label {
-  color: #52b6da;
-  padding-left: 10px;
+    color: #52b6da;
+    padding-left: 10px;
 }
 
 .form_name {
-  width: 40%;
+    width: 40%;
 }
 
 .form_age {
-  width: 14%;
+    width: 14%;
 }
 
 .form_birth {
-  width: 40%;
+    width: 40%;
 }
 
 .form_mail {
-  width: 100%;
+    width: 100%;
 }
 
 .form_tel {
-  width: 48.5%;
+    width: 48.5%;
 }
 
 .form_plan {
-  width: 48.5%;
+    width: 48.5%;
 }
 
 .signup_btn {
-  display: block;
-  width: 400px;
-  height: 70px;
-  line-height: 70px;
-  background-color: #333;
-  margin: 56px auto 0;
-  text-align: center;
-  color: #fff;
-  font-size: 20px;
-  background: linear-gradient(90deg, #ffd56c, #ffba31);
-  border-radius: 999px;
-  letter-spacing: 0.1em;
-  font-weight: bold;
-  letter-spacing: 0.4em;
+    display: block;
+    width: 400px;
+    height: 70px;
+    line-height: 70px;
+    background-color: #333;
+    margin: 56px auto 0;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    background: linear-gradient(90deg, #ffd56c, #ffba31);
+    border-radius: 999px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    letter-spacing: 0.4em;
+    border: none;
+}
+.error {
+    color: red;
+    font-size: 10px;
+    margin-bottom: 8px;
+    margin-top: -8px;
 }
 
 .big_plus {
-  font-size: 16px;
-  margin: 0;
-}/*# sourceMappingURL=style.css.map */
+    font-size: 16px;
+    margin: 0;
+} /*# sourceMappingURL=style.css.map */
