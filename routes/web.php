@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,23 +13,26 @@ use App\Http\Controllers\TestController;
 |
 */
 
-Route::get('/', [TestController::class, 'index'])
-    ->name('tests.index');
+Route::get('/', [StudentController::class, 'index'])
+    ->name('students.index');
 
-Route::get('/create', [TestController::class, 'create'])
-    ->name('tests.create');
+Route::get('/create', [StudentController::class, 'create'])
+    ->name('students.create');
 
-Route::post('/store', [TestController::class, 'store'])
-    ->name('tests.store');
+Route::post('/store', [StudentController::class, 'store'])
+    ->name('students.store');
 
-Route::get('/{test}/edit', [TestController::class, 'edit'])
-    ->name('tests.edit')
-    ->where('test', '[0-9]+');
+Route::get('/search', [StudentController::class, 'search'])
+    ->name('students.search');
 
-Route::patch('/{test}/update', [TestController::class, 'update'])
-    ->name('tests.update')
-    ->where('test', '[0-9]+');
+Route::get('/{student}/edit', [StudentController::class, 'edit'])
+    ->name('students.edit')
+    ->where('student', '[0-9]+');
 
-Route::delete('/{test}/destroy', [TestController::class, 'destroy'])
-    ->name('tests.destroy')
-    ->where('test', '[0-9]+');
+Route::patch('/{student}/update', [StudentController::class, 'update'])
+    ->name('students.update')
+    ->where('student', '[0-9]+');
+
+Route::delete('/{student}/destroy', [StudentController::class, 'destroy'])
+    ->name('students.destroy')
+    ->where('student', '[0-9]+');

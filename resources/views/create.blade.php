@@ -12,7 +12,7 @@
       <div class="main_content signup_content">
         <h2>新規登録画面</h2>
         {{-- ここからフォーム --}}
-        <form method="post" action="{{ route('tests.store')}}">
+        <form method="post" action="{{ route('students.store')}}">
             @csrf
 
           <div class="form_group form_name">

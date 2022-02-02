@@ -12,7 +12,7 @@
       <div class="main_content signup_content">
         <h2>登録内容編集画面</h2>
         {{-- ここからフォーム --}}
-        <form method="post" action="{{ route('tests.update', $test)}}">
+        <form method="post" action="{{ route('students.update', $student)}}">
             @method('PATCH')
             @csrf
 
@@ -24,7 +24,7 @@
               type="text"
               name="name"
               placeholder="阿部 隆"
-              value="{{ old('name', $test->name) }}"
+              value="{{ old('name', $student->name) }}"
             />
             @error('name')
             <div class="error">{{ $message }}</div>
@@ -33,7 +33,7 @@
           <div class="form_group form_age">
             <label for="age">年齢</label>
             <input class="form_parts" id="age" name="age" type="text" placeholder="21"
-            value="{{ old('age', $test->age) }}" />
+            value="{{ old('age', $student->age) }}" />
             @error('age')
             <div class="error">{{ $message }}</div>
             @enderror
@@ -46,7 +46,7 @@
               name="birth"
               type="text"
               placeholder="2000/6/21"
-              value="{{ old('birth', $test->birth) }}"
+              value="{{ old('birth', $student->birth) }}"
             />
             @error('birth')
             <div class="error">{{ $message }}</div>
@@ -60,7 +60,7 @@
               name="mail"
               type="email"
               placeholder="abe-takashi0622@email.com"
-              value="{{ old('mail', $test->mail) }}"
+              value="{{ old('mail', $student->mail) }}"
             />
             @error('mail')
             <div class="error">{{ $message }}</div>
@@ -74,7 +74,7 @@
               name="tel"
               type="tel"
               placeholder="080-1234-5678"
-              value="{{ old('tel', $test->tel) }}"
+              value="{{ old('tel', $student->tel) }}"
             />
             @error('tel')
             <div class="error">{{ $message }}</div>
@@ -84,8 +84,8 @@
             <label for="plan">プラン名</label>
             <select class="form_parts" id="plan" name="plan" onchange="changeColor(this)">
               <option value="">---</option>
-              <option @if(old('plan', $test->plan)=='PREMIUM') selected  @endif>PREMIUM</option>
-              <option @if(old('plan', $test->plan)=='STANDARD') selected  @endif>STANDARD</option>
+              <option @if(old('plan', $student->plan)=='PREMIUM') selected  @endif>PREMIUM</option>
+              <option @if(old('plan', $student->plan)=='STANDARD') selected  @endif>STANDARD</option>
             </select>
             @error('plan')
             <div class="error">{{ $message }}</div>

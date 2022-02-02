@@ -23,6 +23,7 @@ class CreateTestsTable extends Migration
             $table->string('plan');
             $table->timestamps();
         });
+        
     }
 
     /**

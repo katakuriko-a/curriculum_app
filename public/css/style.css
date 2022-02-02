@@ -120,7 +120,7 @@ header {
 
 .search {
     display: flex;
-    margin: auto 44px;
+    margin: auto 0px;
     padding: 0 20px 0 28px;
     width: 26.55%;
     height: 48px;
