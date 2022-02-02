@@ -30,7 +30,6 @@ class StudentRequest extends FormRequest
             'mail' => 'required',
             'tel' => 'required',
             'plan' => 'required',
-            'search' => 'required'
         ];
     }
 
@@ -44,7 +43,6 @@ class StudentRequest extends FormRequest
             'mail.required' => 'e-mailは必須項目です。',
             'tel.required' => 'TELは必須項目です。',
             'plan.required' => 'プラン名は必須項目です。',
-            'search.required' => '必須項目です。',
         ];
     }
 }

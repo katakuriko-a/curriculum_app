@@ -76,6 +76,7 @@ class StudentController extends Controller
         $search = $request->search;
         $students = Student::where('tel', 'LIKE', '%'.$search.'%')->get();
         return view('search')
-            ->with(['students' => $students]);
+            ->with(['students' => $students])
+            ->with(['search' => $search]);
     }
 }

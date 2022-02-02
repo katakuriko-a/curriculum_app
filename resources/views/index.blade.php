@@ -4,6 +4,23 @@
     <x-slot name="title">
         ESA ACADEMY 生徒管理システム
     </x-slot>
+    <header>
+        <form
+            class="search"
+            method="post"
+            action="{{url('/search')}}"
+        >
+        @csrf
+            <input
+                type="text"
+                placeholder="TEL検索"
+                name="search"
+                 />
+            <button>
+                <i class="fas fa-search btn_option"></i>
+            </button>
+        </form>
+      </header>
     <div class="main_wrapper">
       <p class="sum_number">15件</p>
       <div class="main_content">
