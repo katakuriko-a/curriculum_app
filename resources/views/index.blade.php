@@ -17,17 +17,28 @@
             <th>プラン名</th>
           </tr>
 
-@foreach ($userNames as $userName)
+@foreach ($tests as $test)
     <tr>
-        <td>{{$userName}}</td>
-        <td>21</td>
-        <td>2000/2/29</td>
-        <td>suzuken@ggmail.com</td>
-        <td>080-1234-5678</td>
-        <td>PREMIUM</td>
+        <td>{{$test->name}}</td>
+        <td>{{$test->age}}</td>
+        <td>{{$test->birth}}</td>
+        <td>{{$test->mail}}</td>
+        <td>{{$test->tel}}</td>
+        <td>{{$test->plan}}</td>
         <td>
-            <div class="edit_btn btn btn_option">編集</div>
-            <div class="delete_btn btn btn_option">削除</div>
+            <a href="{{route('tests.edit', $test)}}">
+                <div class="edit_btn btn btn_option">
+                        編集
+                </div>
+            </a>
+                <form class="destroy" method="post" action="{{route('tests.destroy', $test)}}" id="destroy">
+                    @method('DELETE')
+                    @csrf
+
+                    <button class="delete_btn btn btn_option">
+                            削除
+                    </button>
+                </form>
         </td>
     </tr>
 @endforeach
@@ -40,5 +51,6 @@
       <a href="#"><div class="pager btn_option">2</div></a>
       <a href="#" class="next"> <i class="fas fa-angle-right"></i> </a>
     </div>
+
 </x-layout>
 

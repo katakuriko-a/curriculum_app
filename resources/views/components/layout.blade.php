@@ -12,13 +12,13 @@
       crossorigin="anonymous"
     />
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{url('css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
   </head>
   <body>
     <div class="side_menu">
       <div class="side_wrapper">
         <a href="{{ route('tests.index')}}">
-          <div class="img_logo"><img src="img/logo.png" alt="ロゴ画像" /></div>
+          <div class="img_logo"><img src="{{asset('img/logo.png')}}" alt="ロゴ画像" /></div>
         </a>
         <a href="{{ route('tests.create')}}"
           ><div class="btn_new btn_option">
@@ -35,7 +35,7 @@
       </div>
       <img
         class="img_dec"
-        src="img/dec-side.png"
+        src="{{asset('img/dec-side.png')}}"
         alt="ESA ACADEMY 生徒管理システム"
       />
     </div>
@@ -48,5 +48,6 @@
       </header>
       {{ $slot }}
     </main>
+    <script src="{{asset('js/main.js')}}"></script>
   </body>
 </html>

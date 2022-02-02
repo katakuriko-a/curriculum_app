@@ -3,88 +3,64 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Test;
+use App\Http\Requests\TestRequest;
 
 class TestController extends Controller
 {
-    private $userNames = [
-        '小林 空晏',
-        '山田 可奈子',
-        '松田 隆',
-        '山田 秀幸',
-        '森 直子',
-        '高岡 正和',
-        '坂本 優',
-        '大島 美香子',
-        '山本 志帆',
-        '丸山 宏二',
-    ];
-    private $userAges = [
-        '21',
-        '22',
-        '21',
-        '20',
-        '22',
-        '19',
-        '20',
-        '22',
-        '19',
-        '20',
-    ];
-    private $userBirthes = [
-        '2000/2/29',
-        '1999/12/6',
-        '2002/2/29',
-        '2001/2/29',
-        '1999/2/29',
-        '2001/2/29',
-        '2001/2/29',
-        '1999/2/29',
-        '2002/2/29',
-        '2001/2/29',
-    ];
-    private $userMails = [
-        'suzuken@ggmail.com',
-        'kanako-1206@ggmail.com',
-        'matsusda-matsu@ggmail.com',
-        'hide-0001@ggmail.com',
-        'naoko-mori@ggmail.com',
-        'mskz0110@ggmail.com',
-        'suguru@ggmail.com',
-        'mikako01234@ggmail.com',
-        'yamashiho2002@ggmail.com',
-        'koji0921@ggmail.com',
-    ];
-    private $userTels = [
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-        '080-1234-5678',
-    ];
-    private $userPlans = [
-        'PREMIUM',
-        'STANDARD',
-        'PREMIUM',
-        'STANDARD',
-        'PREMIUM',
-        'STANDARD',
-        'PREMIUM',
-        'STANDARD',
-        'PREMIUM',
-        'STANDARD',
-    ];
 
     public function index() {
+
+        $tests = Test::latest()->get();
+
         return view('index')
-        ->with(['userNames' => $this->userNames]);
+        ->with(['tests' => $tests]);
     }
 
     public function create() {
         return view('create');
+    }
+
+    public function store(TestRequest $request) {
+
+        $test = new Test();
+        $test->name = $request->name;
+        $test->age = $request->age;
+        $test->birth = $request->birth;
+        $test->mail = $request->mail;
+        $test->tel = $request->tel;
+        $test->plan = $request->plan;
+        $test->save();
+
+        return redirect()
+            ->route('tests.index');
+    }
+
+    public function edit(Test $test)
+    {
+        return view('edit')
+        ->with(['test' => $test]);
+    }
+
+    public function update(TestRequest $request, Test $test) {
+
+        $test->name = $request->name;
+        $test->age = $request->age;
+        $test->birth = $request->birth;
+        $test->mail = $request->mail;
+        $test->tel = $request->tel;
+        $test->plan = $request->plan;
+        $test->save();
+
+        return redirect()
+            ->route('tests.index');
+    }
+
+    public function destroy(Test $test)
+    {
+        $test->delete();
+
+        return redirect()
+            ->route('tests.index');
     }
 }
