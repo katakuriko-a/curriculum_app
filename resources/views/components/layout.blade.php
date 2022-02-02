@@ -43,10 +43,10 @@
       <header>
         <form
             class="search"
-            method="GET"
-            action="{{ route('students.search') }}"
+            method="post"
+            action="{{url('/search')}}"
         >
-            @csrf
+        @csrf
             <input
                 type="text"
                 placeholder="TEL検索"

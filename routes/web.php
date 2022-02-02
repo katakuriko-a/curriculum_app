@@ -22,7 +22,7 @@ Route::get('/create', [StudentController::class, 'create'])
 Route::post('/store', [StudentController::class, 'store'])
     ->name('students.store');
 
-Route::get('/search', [StudentController::class, 'search'])
+Route::post('/search', [StudentController::class, 'search'])
     ->name('students.search');
 
 Route::get('/{student}/edit', [StudentController::class, 'edit'])

@@ -71,13 +71,11 @@ class StudentController extends Controller
             ->route('students.index');
     }
 
-    public function search(StudentRequest $request)
+    public function search(Request $request)
     {
-        var_dump('aaa');
-        return view('search');
-        // $search = $request->search;
-        // $tests = where('tel', 'LIKE', '%'.$search.'%');
-        // $students = Student::latest()->get();
-
+        $search = $request->search;
+        $students = Student::where('tel', 'LIKE', '%'.$search.'%')->get();
+        return view('search')
+            ->with(['students' => $students]);
     }
 }
