@@ -8,7 +8,7 @@
         <form
             class="search"
             method="post"
-            action="{{url('/search')}}"
+            action="{{ route('students.search') }}"
         >
         @csrf
             <input

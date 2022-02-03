@@ -9,9 +9,14 @@ use App\Http\Requests\StudentRequest;
 class StudentController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        
+        $search = $request->search;
 
+        if(!isset($search)) {
+
+        }
         $students = Student::latest()->get();
 
         return view('index')
