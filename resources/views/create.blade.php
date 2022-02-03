@@ -2,17 +2,11 @@
     <x-slot name="title">
         新規登録画面 | ESA ACADEMY 生徒管理システム
     </x-slot>
-    <header>
-      <div class="search">
-        <input type="text" placeholder="TEL検索" />
-        <i class="fas fa-search btn_option"></i>
-      </div>
-    </header>
     <div class="main_wrapper">
       <div class="main_content signup_content">
         <h2>新規登録画面</h2>
         {{-- ここからフォーム --}}
-        <form method="post" action="{{ route('tests.store')}}">
+        <form method="post" action="{{ route('students.store')}}">
             @csrf
 
           <div class="form_group form_name">

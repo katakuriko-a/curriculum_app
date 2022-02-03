@@ -4,34 +4,61 @@
     <x-slot name="title">
         ESA ACADEMY 生徒管理システム
     </x-slot>
-    <div class="main_wrapper">
-      <p class="sum_number">15件</p>
-      <div class="main_content">
-        <table>
-          <tr>
-            <th>名前</th>
-            <th>年齢</th>
-            <th>生年月日</th>
-            <th>e-mail</th>
-            <th>TEL</th>
-            <th>プラン名</th>
-          </tr>
+    <header>
+        <form
+            class="search"
+            method="post"
+            action="{{ route('students.search') }}"
+        >
+        @csrf
+            <input
+                type="text"
+                placeholder="TEL検索"
+                name="search"
+                value="@if (isset( $search )) {{ $search }}@endif"
+                 />
+            <button>
+                <i class="fas fa-search btn_option"></i>
+            </button>
+        </form>
+      </header>
 
-@foreach ($tests as $test)
+        {{-- フラッシュメッセージ --}}
+        @if (session('flash_message'))
+        <div class="alert alert-danger" role="alert">
+            {{session('flash_message')}}
+            <span id="closeBtn">[×]</span>
+        </div>
+        @endif
+
+      <div class="main_wrapper">
+          <p class="sum_number">15件</p>
+          <div class="main_content">
+              <table>
+                  <tr>
+                      <th>名前</th>
+                      <th>年齢</th>
+                      <th>生年月日</th>
+                      <th>e-mail</th>
+                      <th>TEL</th>
+                      <th>プラン名</th>
+                    </tr>
+
+@foreach ($students as $student)
     <tr>
-        <td>{{$test->name}}</td>
-        <td>{{$test->age}}</td>
-        <td>{{$test->birth}}</td>
-        <td>{{$test->mail}}</td>
-        <td>{{$test->tel}}</td>
-        <td>{{$test->plan}}</td>
+        <td>{{$student->name}}</td>
+        <td>{{$student->age}}</td>
+        <td>{{$student->birth}}</td>
+        <td>{{$student->mail}}</td>
+        <td>{{$student->tel}}</td>
+        <td>{{$student->plan}}</td>
         <td>
-            <a href="{{route('tests.edit', $test)}}">
+            <a href="{{route('students.edit', $student)}}">
                 <div class="edit_btn btn btn_option">
                         編集
                 </div>
             </a>
-                <form class="destroy" method="post" action="{{route('tests.destroy', $test)}}" id="destroy">
+                <form class="destroy" method="post" action="{{route('students.destroy', $student)}}" id="destroy">
                     @method('DELETE')
                     @csrf
 
