@@ -15,24 +15,34 @@
                 type="text"
                 placeholder="TEL検索"
                 name="search"
+                value="@if (isset( $search )) {{ $search }}@endif"
                  />
             <button>
                 <i class="fas fa-search btn_option"></i>
             </button>
         </form>
       </header>
-    <div class="main_wrapper">
-      <p class="sum_number">15件</p>
-      <div class="main_content">
-        <table>
-          <tr>
-            <th>名前</th>
-            <th>年齢</th>
-            <th>生年月日</th>
-            <th>e-mail</th>
-            <th>TEL</th>
-            <th>プラン名</th>
-          </tr>
+
+        {{-- フラッシュメッセージ --}}
+        @if (session('flash_message'))
+        <div class="alert alert-danger" role="alert">
+            {{session('flash_message')}}
+            <span id="closeBtn">[×]</span>
+        </div>
+        @endif
+
+      <div class="main_wrapper">
+          <p class="sum_number">15件</p>
+          <div class="main_content">
+              <table>
+                  <tr>
+                      <th>名前</th>
+                      <th>年齢</th>
+                      <th>生年月日</th>
+                      <th>e-mail</th>
+                      <th>TEL</th>
+                      <th>プラン名</th>
+                    </tr>
 
 @foreach ($students as $student)
     <tr>

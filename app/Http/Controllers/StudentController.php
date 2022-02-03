@@ -5,22 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Http\Requests\StudentRequest;
+use League\CommonMark\Extension\Table\TableRow;
 
 class StudentController extends Controller
 {
 
     public function index(Request $request)
     {
-        
-        $search = $request->search;
 
-        if(!isset($search)) {
-
+        if (isset($request)) {
+            $search = $request->search;
+            $students = Student::where('tel', 'LIKE', '%' . $search . '%')
+                ->latest()
+                ->get();
+                $row = count($students);
+                if($row == 0){
+                    session()->flash('flash_message', 'データが見つかりませんでした。');
+                    return redirect()
+                        ->route('students.index');
+                } else {
+                    return view('index')
+                        ->with(['students' => $students])
+                        ->with(['search' => $search]);
+                }
+        } else {
+            $students = Student::latest()->get();
+            return view('index')
+                ->with(['students' => $students]);
         }
-        $students = Student::latest()->get();
-
-        return view('index')
-            ->with(['students' => $students]);
     }
 
     public function create()
@@ -74,14 +86,5 @@ class StudentController extends Controller
 
         return redirect()
             ->route('students.index');
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->search;
-        $students = Student::where('tel', 'LIKE', '%'.$search.'%')->get();
-        return view('search')
-            ->with(['students' => $students])
-            ->with(['search' => $search]);
     }
 }

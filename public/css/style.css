@@ -222,9 +222,9 @@ td:nth-of-type(5) {
 }
 
 button {
-    font-family:inherit;
-        font-size: 100%;
-        border: none;
+    font-family: inherit;
+    font-size: 100%;
+    border: none;
 }
 
 .btn {
@@ -240,7 +240,6 @@ button {
 .delete_btn {
     color: #ee8485;
     background-color: #faeded;
-
 }
 
 .edit_btn {
@@ -393,3 +392,17 @@ label {
     font-size: 16px;
     margin: 0;
 } /*# sourceMappingURL=style.css.map */
+
+/* アラート */
+
+.alert-danger {
+    position: fixed;
+    width: 100%;
+    margin-top: 80px;
+}
+.alert-danger > span {
+    cursor: pointer;
+}
+.hide {
+    display: none;
+}

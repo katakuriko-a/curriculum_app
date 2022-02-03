@@ -17,5 +17,8 @@
         e.target.submit();
     });
 
+    document.querySelector('#closeBtn').addEventListener('click',function(){
+        document.querySelector('.alert-danger').classList.add('hide');
+    });
 }
 
