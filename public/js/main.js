@@ -22,20 +22,24 @@
     }
 
     // 絞り込み検索
+
     const filterList = document.querySelector('.filter_list');
     const cover = document.querySelector('.cover');
-    // const filterList = document.querySelector('.filter_list');
+
+    function closeList() {
+        filterList.classList.remove('open');
+        cover.classList.remove('show');
+    }
+
     document.querySelector('.filter').addEventListener('click', () => {
         filterList.classList.add('open');
         cover.classList.add('show');
     })
     document.querySelector('.back').addEventListener('click', () => {
-        filterList.classList.remove('open');
-        cover.classList.remove('show');
+        closeList();
     })
     cover.addEventListener('click', () => {
-        filterList.classList.remove('open');
-        cover.classList.remove('show');
+        closeList();
     })
 
 }
