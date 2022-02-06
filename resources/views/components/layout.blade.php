@@ -28,7 +28,7 @@
         >
         <nav>
           <ul>
-            <a href="{{ route('students.index')}}"
+            <a href="{{ route('students.index')}}" class="btn_option"
               ><li><i class="fas fa-home"></i>トップページ</li></a
             >
           </ul>

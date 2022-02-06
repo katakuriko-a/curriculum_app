@@ -13,21 +13,20 @@ class StudentController extends Controller
     public function index(Request $request)
     {
 
-        if (isset($request)) {
+        if (!empty($request)) {
             $search = $request->search;
-            $students = Student::where('tel', 'LIKE', '%' . $search . '%')
-                ->latest()
-                ->get();
-                $row = count($students);
-                if($row == 0){
-                    session()->flash('flash_message', 'データが見つかりませんでした。');
-                    return redirect()
-                        ->route('students.index');
-                } else {
-                    return view('index')
-                        ->with(['students' => $students])
-                        ->with(['search' => $search]);
-                }
+            $students = Student::where('name', 'LIKE', '%' . $search . '%')
+                                ->orWhere('name', 'like', '%' . $request->name . '%')
+                                ->orWhere('age', 'like', '%' . $request->age . '%')
+                                ->orWhere('birth', 'like', '%' . $request->birth . '%')
+                                ->orWhere('tel', 'like', '%' . $request->tel . '%')
+                                ->orWhere('mail', 'like', '%' . $request->mail . '%')
+                                ->orWhere('plan', 'like', '%' . $request->plan . '%')
+                                ->latest()
+                                ->get();
+            return view('index')
+                ->with(['students' => $students])
+                ->with(['search' => $search]);
         } else {
             $students = Student::latest()->get();
             return view('index')
