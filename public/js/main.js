@@ -8,7 +8,7 @@
     //削除確認のダイアログ
 
     const destroy = document.getElementById('destroy');
-    if(!typeof destroy === null){
+    if(!typeof destroy == null){
         destroy.addEventListener('submit', e => {
             e.preventDefault();
 

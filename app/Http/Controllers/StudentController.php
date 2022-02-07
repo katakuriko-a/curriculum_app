@@ -16,13 +16,13 @@ class StudentController extends Controller
         if (!empty($request)) {
             $search = $request->search;
             $students = Student::where('name', 'LIKE', '%' . $search . '%')
-                                ->orWhere('name', 'like', '%' . $request->name . '%')
-                                ->orWhere('age', 'like', '%' . $request->age . '%')
-                                ->orWhere('birth', 'like', '%' . $request->birth . '%')
-                                ->orWhere('tel', 'like', '%' . $request->tel . '%')
-                                ->orWhere('mail', 'like', '%' . $request->mail . '%')
-                                ->orWhere('plan', 'like', '%' . $request->plan . '%')
-                                ->latest()
+                                ->Where('name', 'like', '%' . $request->name . '%')
+                                ->Where('age', 'like', '%' . $request->age . '%')
+                                ->Where('birth', 'like', '%' . $request->birth . '%')
+                                ->Where('tel', 'like', '%' . $request->tel . '%')
+                                ->Where('mail', 'like', '%' . $request->mail . '%')
+                                ->Where('plan', 'like', '%' . $request->plan . '%')
+                                ->OrderBy('created_at','desc')
                                 ->get();
             return view('index')
                 ->with(['students' => $students])
@@ -32,7 +32,9 @@ class StudentController extends Controller
             return view('index')
                 ->with(['students' => $students]);
         }
+
     }
+
 
     public function create()
     {
