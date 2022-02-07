@@ -13,7 +13,7 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/', [StudentController::class, 'index'])
+Route::match(['get', 'post'], '/', [StudentController::class, 'index'])
     ->name('students.index');
 
 Route::get('/create', [StudentController::class, 'create'])
@@ -21,9 +21,6 @@ Route::get('/create', [StudentController::class, 'create'])
 
 Route::post('/store', [StudentController::class, 'store'])
     ->name('students.store');
-
-Route::post('/search', [StudentController::class, 'index'])
-    ->name('students.search');
 
 Route::get('/{student}/edit', [StudentController::class, 'edit'])
     ->name('students.edit')

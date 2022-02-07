@@ -7,18 +7,40 @@
 
     //削除確認のダイアログ
 
-    document.getElementById('destroy').addEventListener('submit', e => {
-        e.preventDefault();
+    const destroy = document.getElementById('destroy');
+    if(!typeof destroy == null){
+        destroy.addEventListener('submit', e => {
+            e.preventDefault();
 
-        if(!confirm('本当に削除しますか？')){
-            return;
-        }
+            if(!confirm('本当に削除しますか？')){
+                return;
+            }
 
-        e.target.submit();
-    });
+            e.target.submit();
+        });
 
-    document.querySelector('#closeBtn').addEventListener('click',function(){
-        document.querySelector('.alert-danger').classList.add('hide');
-    });
+    }
+
+    // 絞り込み検索
+
+    const filterList = document.querySelector('.filter_list');
+    const cover = document.querySelector('.cover');
+
+    function closeList() {
+        filterList.classList.remove('open');
+        cover.classList.remove('show');
+    }
+
+    document.querySelector('.filter').addEventListener('click', () => {
+        filterList.classList.add('open');
+        cover.classList.add('show');
+    })
+    document.querySelector('.back').addEventListener('click', () => {
+        closeList();
+    })
+    cover.addEventListener('click', () => {
+        closeList();
+    })
+
 }
 

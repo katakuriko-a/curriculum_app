@@ -13,27 +13,28 @@ class StudentController extends Controller
     public function index(Request $request)
     {
 
-        if (isset($request)) {
+        if (!empty($request)) {
             $search = $request->search;
-            $students = Student::where('tel', 'LIKE', '%' . $search . '%')
-                ->latest()
-                ->get();
-                $row = count($students);
-                if($row == 0){
-                    session()->flash('flash_message', 'データが見つかりませんでした。');
-                    return redirect()
-                        ->route('students.index');
-                } else {
-                    return view('index')
-                        ->with(['students' => $students])
-                        ->with(['search' => $search]);
-                }
+            $students = Student::where('name', 'LIKE', '%' . $search . '%')
+                                ->Where('name', 'like', '%' . $request->name . '%')
+                                ->Where('age', 'like', '%' . $request->age . '%')
+                                ->Where('birth', 'like', '%' . $request->birth . '%')
+                                ->Where('tel', 'like', '%' . $request->tel . '%')
+                                ->Where('mail', 'like', '%' . $request->mail . '%')
+                                ->Where('plan', 'like', '%' . $request->plan . '%')
+                                ->OrderBy('created_at','desc')
+                                ->get();
+            return view('index')
+                ->with(['students' => $students])
+                ->with(['search' => $search]);
         } else {
             $students = Student::latest()->get();
             return view('index')
                 ->with(['students' => $students]);
         }
+
     }
+
 
     public function create()
     {
