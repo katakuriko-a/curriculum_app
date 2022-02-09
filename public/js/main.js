@@ -31,6 +31,7 @@
         cover.classList.remove('show');
     }
 
+    
     document.querySelector('.filter').addEventListener('click', () => {
         filterList.classList.add('open');
         cover.classList.add('show');

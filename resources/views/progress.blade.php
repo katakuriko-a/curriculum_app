@@ -1,3 +1,8 @@
+<?php
+    $row = count($student->progress);
+    // dd($row);
+?>
+
 <x-layout>
     <x-slot name="title"> 進捗報告 | ESA ACADEMY 生徒管理システム </x-slot>
     <a href="{{ route('progress.create', $student) }}">
@@ -38,6 +43,11 @@
 
                 @endforeach
             </table>
+            @if ($row === 0)
+            <div class="alert alert-danger" role="alert">
+                進捗報告がまだありません。
+            </div>
+            @endif
         </div>
     </div>
 </x-layout>

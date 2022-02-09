@@ -40,9 +40,8 @@ class ProgressController extends Controller
         $posts = Progress::where('student_id', 'LIKE', '%' . $student->id . '%')
             ->latest()->get();
 
-        return view('progress')
-            ->with(['posts' => $posts])
-            ->with(['student' => $student]);
+        return redirect()
+            ->route('progress.index', $student);
     }
 
     public function edit(Progress $progress)
