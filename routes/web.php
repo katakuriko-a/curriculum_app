@@ -34,20 +34,21 @@ Route::delete('/{student}/destroy', [StudentController::class, 'destroy'])
     ->where('student', '[0-9]+');
 
 
-Route::get('/{student}/create', [ProgressController::class, 'create'])
-->name('posts.create');
+// 進捗報告に関するルーティング
+Route::get('/progress/{student}/create', [ProgressController::class, 'create'])
+->name('progress.create');
 
-Route::get('/{student}/store', [ProgressController::class, 'store'])
-    ->name('posts.store');
+Route::get('/progress/{student}/store', [ProgressController::class, 'store'])
+    ->name('progress.store');
 
-Route::get('/{student}/progress', [ProgressController::class, 'index'])
-->name('posts.index');
+Route::get('/progress/{student}/progress', [ProgressController::class, 'index'])
+->name('progress.index');
 
-Route::get('/posts/{progress}/edit', [ProgressController::class, 'edit'])
-    ->name('posts.edit');
+Route::get('/progress/{progress}/edit', [ProgressController::class, 'edit'])
+    ->name('progress.edit');
 
-Route::patch('posts/{progress}/update', [ProgressController::class, 'update'])
-    ->name('posts.update');
+Route::patch('/progress/{progress}/update', [ProgressController::class, 'update'])
+    ->name('progress.update');
 
-Route::delete('/posts/{progress}/destroy', [ProgressController::class, 'destroy'])
-    ->name('posts.destroy');
+Route::delete('/progress/{progress}/destroy', [ProgressController::class, 'destroy'])
+    ->name('progress.destroy');

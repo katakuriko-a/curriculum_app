@@ -26,8 +26,8 @@ class ProgressController extends Controller
     public function store(Request $request, Student $student)
     {
         $request->validate([
-            'title' =>'required',
-            'content' =>'required',
+            'title' => 'required',
+            'content' => 'required',
         ]);
 
         $progress = new Progress();
@@ -60,13 +60,13 @@ class ProgressController extends Controller
         ])->save();
 
         return redirect()
-            ->route('posts.index', $progress->student);
+            ->route('progress.index', $progress->student);
     }
 
     public function destroy(Progress $progress)
     {
         $progress->delete();
         return redirect()
-            ->route('posts.index', $progress->student);
+            ->route('progress.index', $progress->student);
     }
 }

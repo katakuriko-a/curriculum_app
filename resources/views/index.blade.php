@@ -88,7 +88,7 @@
         <td>{{$student->plan}}</td>
         <td>
             <div class="btn_group">
-                <a href="{{route('posts.index', $student)}}">
+                <a href="{{route('progress.index', $student)}}">
                     <div class="progress_btn btn btn_option">
                             進捗報告
                     </div>

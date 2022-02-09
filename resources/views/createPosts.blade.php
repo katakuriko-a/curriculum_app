@@ -6,7 +6,7 @@
       <div class="main_content signup_content">
         <h2>新規投稿を作成</h2>
         {{-- ここからフォーム --}}
-        <form method="get" action="{{ route('posts.store', $student)}}">
+        <form method="get" action="{{ route('progress.store', $student)}}">
             @csrf
 
           <div class="form_group form_title">
