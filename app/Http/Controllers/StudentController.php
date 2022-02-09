@@ -41,6 +41,7 @@ class StudentController extends Controller
         return view('create');
     }
 
+
     public function store(StudentRequest $request)
     {
 
@@ -58,6 +59,7 @@ class StudentController extends Controller
         return redirect()
             ->route('students.index');
     }
+
 
     public function edit(Student $student)
     {
