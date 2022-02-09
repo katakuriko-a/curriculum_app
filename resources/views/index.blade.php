@@ -87,19 +87,26 @@
         <td>{{$student->tel}}</td>
         <td>{{$student->plan}}</td>
         <td>
-            <a href="{{route('students.edit', $student)}}">
-                <div class="edit_btn btn btn_option">
-                        編集
-                </div>
-            </a>
+            <div class="btn_group">
+                <a href="{{route('progress.index', $student)}}">
+                    <div class="progress_btn btn btn_option">
+                            進捗報告
+                    </div>
+                </a>
+                <a href="{{route('students.edit', $student)}}">
+                    <div class="edit_btn btn btn_option">
+                            編集
+                    </div>
+                </a>
                 <form class="destroy" method="post" action="{{route('students.destroy', $student)}}" id="destroy">
                     @method('DELETE')
                     @csrf
 
                     <button class="delete_btn btn btn_option" >
-                            削除
+                        削除
                     </button>
                 </form>
+            </div>
         </td>
     </tr>
     @endforeach

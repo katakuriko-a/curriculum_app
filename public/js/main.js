@@ -8,7 +8,8 @@
     //削除確認のダイアログ
 
     const destroy = document.getElementById('destroy');
-    if(!typeof destroy == null){
+
+        console.log('destroy')
         destroy.addEventListener('submit', e => {
             e.preventDefault();
 
@@ -19,7 +20,6 @@
             e.target.submit();
         });
 
-    }
 
     // 絞り込み検索
 
@@ -31,6 +31,7 @@
         cover.classList.remove('show');
     }
 
+    
     document.querySelector('.filter').addEventListener('click', () => {
         filterList.classList.add('open');
         cover.classList.add('show');

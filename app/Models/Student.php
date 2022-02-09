@@ -17,4 +17,8 @@ class Student extends Model
         'tel',
         'plan',
     ];
+
+    public function progress() {
+        return $this->hasMany(Progress::class);
+    }
 }
