@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
@@ -14,9 +14,7 @@ class StudentController extends Controller
     {
 
         if (!empty($request)) {
-            $search = $request->search;
-            $students = Student::where('name', 'LIKE', '%' . $search . '%')
-                ->Where('name', 'like', '%' . $request->name . '%')
+            $students = Student::where('name', 'like', '%' . $request->name . '%')
                 ->Where('age', 'like', '%' . $request->age . '%')
                 ->Where('birth', 'like', '%' . $request->birth . '%')
                 ->Where('tel', 'like', '%' . $request->tel . '%')
@@ -24,24 +22,21 @@ class StudentController extends Controller
                 ->Where('plan', 'like', '%' . $request->plan . '%')
                 ->OrderBy('created_at', 'desc')
                 ->get();
-            return view('index')
-                ->with(['students' => $students])
-                ->with(['search' => $search]);
         } else {
             $students = Student::latest()->get();
-            return view('index')
-                ->with(['students' => $students]);
         }
+        return response()->json($students);
     }
 
-
-    public function create()
+    public function edit($id)
     {
-        return view('create');
+        $student = Student::find($id);
+        return response()->json($student);
     }
 
 
-    public function store(StudentRequest $request)
+
+    public function store(Request $request)
     {
 
         $student = new Student();
@@ -55,19 +50,15 @@ class StudentController extends Controller
             'plan' => $request->plan,
         ])->save();
 
-        return redirect()
-            ->route('students.index');
+        return response()->json();
     }
 
 
-    public function edit(Student $student)
-    {
-        return view('edit')
-            ->with(['student' => $student]);
-    }
 
-    public function update(StudentRequest $request, Student $student)
+    public function update(StudentRequest $request, $id)
     {
+
+        $student = Student::find($id);
 
         $student->fill([
             'name' => $request->name,
@@ -78,16 +69,15 @@ class StudentController extends Controller
             'plan' => $request->plan,
         ])->save();
 
-        return redirect()
-            ->route('students.index');
+        return response()->json();
     }
 
-    public function destroy(Student $student)
+    public function destroy($id)
     {
+        $student = Student::find($id);
         $student->delete();
 
-        return redirect()
-            ->route('students.index');
+        return response()->json();
     }
 
     public function csv(Request $request)
@@ -115,12 +105,5 @@ class StudentController extends Controller
         return response((string) $csvReader)
             ->header('Content-Type', 'text/csv; charset=UTF-8')
             ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
-    }
-
-    public function test()
-    {
-        return response()->json([
-            'result' => 'Response from Laravel',
-        ]);
     }
 }
