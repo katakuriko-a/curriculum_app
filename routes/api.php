@@ -40,6 +40,9 @@ Route::middleware(['cors'])->group(function () {
         ->name('students.destroy')
         ->where('student', '[0-9]+');
 
+    Route::get('/csv', [StudentController::class, 'csv'])
+        ->name('students.csv');
+
 
     Route::get('/progress/{id}', [ProgressController::class, 'index'])
         ->name('progress.index');

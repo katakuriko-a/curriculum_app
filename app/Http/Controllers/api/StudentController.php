@@ -14,7 +14,8 @@ class StudentController extends Controller
     {
 
         if (!empty($request)) {
-            $students = Student::where('name', 'like', '%' . $request->name . '%')
+            $students = Student::where('name', 'like', '%' . $request->search . '%')
+                ->Where('name', 'like', '%' . $request->name . '%')
                 ->Where('age', 'like', '%' . $request->age . '%')
                 ->Where('birth', 'like', '%' . $request->birth . '%')
                 ->Where('tel', 'like', '%' . $request->tel . '%')

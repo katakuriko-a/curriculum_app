@@ -55,7 +55,6 @@ class ProgressController extends Controller
 
         return response()->json();
     }
-
     public function destroy($id)
     {
         $post = Progress::find($id);
