@@ -51,12 +51,12 @@ class StudentController extends Controller
             'plan' => $request->plan,
         ])->save();
 
-        return response()->json();
+        return response()->json($student);
     }
 
 
 
-    public function update(StudentRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $student = Student::find($id);
@@ -70,7 +70,7 @@ class StudentController extends Controller
             'plan' => $request->plan,
         ])->save();
 
-        return response()->json();
+        return response()->json($student);
     }
 
     public function destroy($id)

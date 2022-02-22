@@ -53,7 +53,7 @@ class ProgressController extends Controller
             'content' => $request->content,
         ])->save();
 
-        return response()->json();
+        return response()->json($progress);
     }
     public function destroy($id)
     {
