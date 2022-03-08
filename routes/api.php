@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\StudentController;
 use App\Http\Controllers\api\ProgressController;
+use App\Http\Controllers\api\LevelController;
+use App\Http\Controllers\api\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,4 +61,15 @@ Route::middleware(['cors'])->group(function () {
     Route::delete('/progress/{id}/destroy', [ProgressController::class, 'destroy'])
         ->name('students.destroy')
         ->where('student', '[0-9]+');
+
+    Route::get('/level', [LevelController::class, 'index'])
+        ->name('level.index');
+
+    Route::get('/teachers', [TeacherController::class, 'index']);
+
+    Route::post('/book', [StudentController::class, 'book']);
+
+    Route::get('/current_student', [StudentController::class, 'current_student']);
+
+    Route::get('/current_student_name', [StudentController::class, 'current_student_name']);
 });

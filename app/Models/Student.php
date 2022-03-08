@@ -16,11 +16,22 @@ class Student extends Model
         'mail',
         'tel',
         'plan',
+        'level_id',
     ];
+
+    protected $guarded = ['id'];
 
     public function progress() {
         return $this->hasMany(Progress::class);
     }
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class);
+    }
 
-    
+
 }

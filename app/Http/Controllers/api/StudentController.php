@@ -5,10 +5,30 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Http\Requests\StudentRequest;
+use App\Models\Level;
 use League\CommonMark\Extension\Table\TableRow;
 
 class StudentController extends Controller
 {
+    public function current_student(Request $request){
+        $student = Student::where('mail', 'like', '%' . $request->mail . '%')
+        ->first();
+        return response()->json($student->id);
+    }
+
+    public function current_student_name(Request $request){
+        $student = Student::find($request->id);
+        return response()->json($student->name);
+    }
+
+    public function book(Request $request)
+    {
+        $student = Student::find($request->current_student_id);
+        $student->teachers()
+            ->attach([$request->teacher_id => ['start_time' =>$request->start_time,  'end_time' => $request->end_time,]]);
+
+        return response()->json();
+    }
 
     public function index(Request $request)
     {
@@ -41,6 +61,8 @@ class StudentController extends Controller
     {
 
         $student = new Student();
+        $level = Level::where('name', $request->level)
+            ->first();
 
         $student->fill([
             'name' => $request->name,
@@ -49,6 +71,7 @@ class StudentController extends Controller
             'mail' => $request->mail,
             'tel' => $request->tel,
             'plan' => $request->plan,
+            'level_id' => $level->id,
         ])->save();
 
         return response()->json($student);
@@ -60,6 +83,8 @@ class StudentController extends Controller
     {
 
         $student = Student::find($id);
+        $level = Level::where('name', $request->level)
+            ->first();
 
         $student->fill([
             'name' => $request->name,
@@ -68,6 +93,7 @@ class StudentController extends Controller
             'mail' => $request->mail,
             'tel' => $request->tel,
             'plan' => $request->plan,
+            'level_id' => $level->id,
         ])->save();
 
         return response()->json($student);
