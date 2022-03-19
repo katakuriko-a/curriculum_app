@@ -13,7 +13,7 @@ class Teacher extends Model
 
     public function students()
     {
-        return $this->belongsToMany(Student::class);
+        return $this->belongsToMany(Student::class, "reserves")->withTimestamps();
     }
 
 }

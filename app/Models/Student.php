@@ -21,7 +21,8 @@ class Student extends Model
 
     protected $guarded = ['id'];
 
-    public function progress() {
+    public function progress()
+    {
         return $this->hasMany(Progress::class);
     }
     public function level()
@@ -30,8 +31,6 @@ class Student extends Model
     }
     public function teachers()
     {
-        return $this->belongsToMany(Teacher::class);
+        return $this->belongsToMany(Teacher::class, "reserves")->withTimestamps()->withPivot('id', 'start_time','end_time');
     }
-
-
 }

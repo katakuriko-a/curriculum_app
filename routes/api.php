@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\StudentController;
+use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\ProgressController;
 use App\Http\Controllers\api\LevelController;
 use App\Http\Controllers\api\TeacherController;
@@ -24,17 +25,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::middleware(['cors'])->group(function () {
-    Route::get('/', [StudentController::class, 'index'])
+    Route::get('/', [UserController::class, 'index'])
         ->name('students.index');
 
-    Route::post('/store', [StudentController::class, 'store'])
-        ->name('students.store');
+    Route::post('/store', [UserController::class, 'store']);
 
-    Route::get('/edit/{id}', [StudentController::class, 'edit'])
-        ->name('students.edit')
-        ->where('student', '[0-9]+');
+    Route::get('/edit/{id}', [UserController::class, 'edit']);
 
-    Route::post('/update/{id}', [StudentController::class, 'update'])
+    Route::post('/update/{id}', [UserController::class, 'update'])
         ->name('students.update')
         ->where('student', '[0-9]+');
 
@@ -62,14 +60,29 @@ Route::middleware(['cors'])->group(function () {
         ->name('students.destroy')
         ->where('student', '[0-9]+');
 
-    Route::get('/level', [LevelController::class, 'index'])
-        ->name('level.index');
+
 
     Route::get('/teachers', [TeacherController::class, 'index']);
 
-    Route::post('/book', [StudentController::class, 'book']);
+    Route::post('/teacher/store', [UserController::class, 'teacher_store']);
 
-    Route::get('/current_student', [StudentController::class, 'current_student']);
+    Route::post('/reserve', [UserController::class, 'reserve']);
+
+    Route::post('/reserve/update', [UserController::class, 'update_reserve']);
+
+    Route::get('/get_reserve/{id}', [UserController::class, 'get_reserve']);
+
+    Route::post('/get/student/with_email', [UserController::class, 'get_student']);
+
+    Route::get('/get_reserve_students/{id}', [UserController::class, 'get_reserve_students']);
+
+    Route::get('/reserve/{id}', [TeacherController::class, 'get_teacher']);
+
+    Route::post('/reserve/{id}/destroy', [UserController::class, 'destroy_reserve']);
+
+    Route::post('/reserve/{id}/edit', [UserController::class, 'edit_reserve']);
+
+    Route::get('/current_student', [UserController::class, 'current_student']);
 
     Route::get('/current_student_name', [StudentController::class, 'current_student_name']);
 });

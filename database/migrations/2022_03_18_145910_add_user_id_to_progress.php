@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLevelIdToStudentsTable extends Migration
+class AddUserIdToProgress extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class AddLevelIdToStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
+        Schema::table('progress', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('level_id');
-            $table->foreign('level_id')
-                  ->references('id')
-                  ->on('levels');
+            // $table
+            // ->foreign('user_id')
+            // ->references('id')
+            // ->on('users')
+            // ->onDelete('cascade');
         });
     }
 
@@ -29,7 +30,7 @@ class AddLevelIdToStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
+        Schema::table('progress', function (Blueprint $table) {
             //
         });
     }

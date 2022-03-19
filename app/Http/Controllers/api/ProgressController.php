@@ -10,16 +10,11 @@ class ProgressController extends Controller
 {
     public function index($id)
     {
-        $progress = Progress::where('student_id', 'LIKE', '%' . $id . '%')
+        $progress = Progress::where('user_id', 'LIKE', '%' . $id . '%')
             ->latest()->get();
             return response()->json($progress);
     }
 
-    public function create(Student $student)
-    {
-        return view('createPosts')
-            ->with(['student' => $student]);
-    }
 
     public function store(Request $request, $id)
     {
@@ -30,7 +25,7 @@ class ProgressController extends Controller
 
         $progress = new Progress();
         $progress->fill([
-            'student_id' => $id,
+            'user_id' => $id,
             'title' => $request->title,
             'content' => $request->content,
         ])->save();

@@ -10,22 +10,66 @@ use League\CommonMark\Extension\Table\TableRow;
 
 class StudentController extends Controller
 {
-    public function current_student(Request $request){
+
+    public function edit_reserve(Request $request, $id)
+    {
+        $reserves = Student::find($request->student_id)->teachers()->get();
+        foreach ($reserves as $reserve) {
+            //
+            if ($reserve->pivot->id == $id) {
+                $test = $reserve;
+            }
+        }
+        // $reserve = $reserves->where('id', '=', $id);
+        return response()->json($test);
+    }
+
+    public function destroy_reserve(Request $request, $id)
+    {
+        $reserves = Student::find($request->student_id)->teachers()->first()->pivot;
+        $reserve = $reserves->where('id', '=', $id);
+        $reserve->delete();
+        return response()->json();
+    }
+
+    public function current_student(Request $request)
+    {
         $student = Student::where('mail', 'like', '%' . $request->mail . '%')
-        ->first();
+            ->first();
         return response()->json($student->id);
     }
 
-    public function current_student_name(Request $request){
+    public function current_student_name(Request $request)
+    {
         $student = Student::find($request->id);
         return response()->json($student->name);
     }
 
-    public function book(Request $request)
+    public function get_reserve($id)
+    {
+        $reserves = Student::find($id)->teachers()->orderBy('start_time')->get();
+        return response()->json($reserves);
+    }
+
+
+    public function reserve(Request $request)
     {
         $student = Student::find($request->current_student_id);
         $student->teachers()
-            ->attach([$request->teacher_id => ['start_time' =>$request->start_time,  'end_time' => $request->end_time,]]);
+            ->attach([$request->teacher_id => ['start_time' => $request->start_time,  'end_time' => $request->end_time,]]);
+
+        return response()->json();
+    }
+
+    public function update_reserve(Request $request)
+    {
+        $reserves = Student::find($request->current_student_id)->teachers()->first()->pivot;
+        $reserve = $reserves->where('id', '=', $request->reserve_id);
+        $reserve->delete();
+
+        $student = Student::find($request->current_student_id);
+        $student->teachers()
+            ->attach([$request->teacher_id => ['start_time' => $request->start_time,  'end_time' => $request->end_time,]]);
 
         return response()->json();
     }
