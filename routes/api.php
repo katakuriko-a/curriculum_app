@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\StudentController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\ProgressController;
-use App\Http\Controllers\api\LevelController;
 use App\Http\Controllers\api\TeacherController;
 
 /*
@@ -25,23 +24,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::middleware(['cors'])->group(function () {
-    Route::get('/', [UserController::class, 'index'])
-        ->name('students.index');
+    Route::get('/', [UserController::class, 'index']);
+
+    Route::get('/get_students', [UserController::class, 'get_students']);
 
     Route::post('/store', [UserController::class, 'store']);
 
     Route::get('/edit/{id}', [UserController::class, 'edit']);
 
-    Route::post('/update/{id}', [UserController::class, 'update'])
-        ->name('students.update')
-        ->where('student', '[0-9]+');
+    Route::post('/update/{id}', [UserController::class, 'update']);
 
-    Route::delete('/destroy/{id}', [StudentController::class, 'destroy'])
-        ->name('students.destroy')
-        ->where('student', '[0-9]+');
+    Route::delete('/destroy/{id}', [UserController::class, 'destroy']);
 
-    Route::get('/csv', [StudentController::class, 'csv'])
-        ->name('students.csv');
+    Route::get('/csv', [UserController::class, 'csv']);
 
 
     Route::get('/progress/{id}', [ProgressController::class, 'index'])
@@ -64,7 +59,6 @@ Route::middleware(['cors'])->group(function () {
 
     Route::get('/teachers', [TeacherController::class, 'index']);
 
-    Route::post('/teacher/store', [UserController::class, 'teacher_store']);
 
     Route::post('/reserve', [UserController::class, 'reserve']);
 
@@ -72,7 +66,7 @@ Route::middleware(['cors'])->group(function () {
 
     Route::get('/get_reserve/{id}', [UserController::class, 'get_reserve']);
 
-    Route::post('/get/student/with_email', [UserController::class, 'get_student']);
+    Route::post('/get/user/with_email', [UserController::class, 'get_user']);
 
     Route::get('/get_reserve_students/{id}', [UserController::class, 'get_reserve_students']);
 
@@ -82,7 +76,7 @@ Route::middleware(['cors'])->group(function () {
 
     Route::post('/reserve/{id}/edit', [UserController::class, 'edit_reserve']);
 
-    Route::get('/current_student', [UserController::class, 'current_student']);
+    Route::get('/current_user', [UserController::class, 'current_user']);
 
     Route::get('/current_student_name', [StudentController::class, 'current_student_name']);
 });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameStudentTeacherToReservesTable extends Migration
+class DropColumnRolesIdColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class RenameStudentTeacherToReservesTable extends Migration
      */
     public function up()
     {
-        Schema::rename('student_teacher','reserves');
+        Schema::table('roles', function (Blueprint $table) {
+            //
+            $table->dropColumn('roles_id');
+        });
     }
 
     /**
@@ -23,6 +26,9 @@ class RenameStudentTeacherToReservesTable extends Migration
      */
     public function down()
     {
-        Schema::rename('reserves','student_teacher');
+        Schema::table('roles', function (Blueprint $table) {
+            //
+            $table->unsignedBigInteger('roles_id');
+        });
     }
 }
