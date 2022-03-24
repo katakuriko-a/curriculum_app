@@ -550,3 +550,73 @@ textarea {
     height: 200px;
 }
 
+/* csvダウンロード */
+.csv-downloader {
+    position: fixed;
+    background-color: #fff;
+    width: 500px;
+    height: 250px;
+    /* border: #000 1px solid; */
+    border-radius: 8px;
+    margin-top: 200px;
+    margin-left: 300px;
+    display: none;
+    z-index: 300;
+}
+
+.popup{
+    display: block;
+}
+.csv-downloader input[type="text"] {
+    height: 48px;
+    width: 90%;
+    margin-right: 4px;
+    border-radius: 8px;
+    padding: 0 0 0 16px;
+
+}
+
+.csv-downloader input[type="submit"] {
+    padding: 16px;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #ffd56c;
+    font-weight: bold;
+    position: absolute;
+    right: 24px;
+    bottom: 30px;
+}
+
+.csv-downloader span {
+    display: block;
+    color: #878787;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: auto;
+}
+
+.csv-downloader .back {
+    margin-right: 100px;
+    margin-left: -5px;
+    margin-bottom: 24px;
+}
+
+.csv-downloader form {
+    margin-top: 0;
+}
+
+.input_filename {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+}
+
+#csv{
+    color: #fff;
+    position: absolute;
+    display: inline-block;
+    background-color: #b8b8b8;
+    padding: 16px;
+    margin: 16px 24px;
+    border-radius: 8px;
+}

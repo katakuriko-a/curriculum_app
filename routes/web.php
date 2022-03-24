@@ -17,10 +17,16 @@ use App\Http\Controllers\StudentController;
 
 Route::match(['get', 'post'], '/', [StudentController::class, 'index'])
     ->name('students.index');
+
 Route::get('/create', [StudentController::class, 'create'])
     ->name('students.create');
+
 Route::post('/store', [StudentController::class, 'store'])
 ->name('students.store');
+
+Route::get('/csv', [StudentController::class, 'csv'])
+->name('students.csv');
+
 Route::get('/{student}/edit', [StudentController::class, 'edit'])
     ->name('students.edit')
     ->where('student', '[0-9]+');

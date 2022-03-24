@@ -182,7 +182,7 @@ services:
         - "dockerhost:${DOCKER_HOST_IP}"
       ports:
         - "${WORKSPACE_SSH_PORT}:22"
-        - "${WORKSPACE_BROWSERSYNC_HOST_PORT}:3000"
+        # - "${WORKSPACE_BROWSERSYNC_HOST_PORT}:3000"
         - "${WORKSPACE_BROWSERSYNC_UI_HOST_PORT}:3001"
         - "${WORKSPACE_VUE_CLI_SERVE_HOST_PORT}:8080"
         - "${WORKSPACE_VUE_CLI_UI_HOST_PORT}:8000"
@@ -755,22 +755,22 @@ services:
         - backend
 
 ### Aerospike ##########################################
-    aerospike:
-      build: ./aerospike
-      volumes:
-        - workspace
-        - ${DATA_PATH_HOST}/aerospike:/opt/aerospike/data
-      ports:
-        - "${AEROSPIKE_SERVICE_PORT}:3000"
-        - "${AEROSPIKE_FABRIC_PORT}:3001"
-        - "${AEROSPIKE_HEARTBEAT_PORT}:3002"
-        - "${AEROSPIKE_INFO_PORT}:3003"
-      environment:
-        - STORAGE_GB=${AEROSPIKE_STORAGE_GB}
-        - MEM_GB=${AEROSPIKE_MEM_GB}
-        - NAMESPACE=${AEROSPIKE_NAMESPACE}
-      networks:
-        - backend
+    # aerospike:
+    #   build: ./aerospike
+    #   volumes:
+    #     - workspace
+    #     - ${DATA_PATH_HOST}/aerospike:/opt/aerospike/data
+    #   ports:
+    #     - "${AEROSPIKE_SERVICE_PORT}:3000"
+    #     - "${AEROSPIKE_FABRIC_PORT}:3001"
+    #     - "${AEROSPIKE_HEARTBEAT_PORT}:3002"
+    #     - "${AEROSPIKE_INFO_PORT}:3003"
+    #   environment:
+    #     - STORAGE_GB=${AEROSPIKE_STORAGE_GB}
+    #     - MEM_GB=${AEROSPIKE_MEM_GB}
+    #     - NAMESPACE=${AEROSPIKE_NAMESPACE}
+    #   networks:
+    #     - backend
 
 ### Memcached ############################################
     memcached:

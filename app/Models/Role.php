@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Progress extends Model
+class Role extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
-        'user_id',
-        'title',
-        'content',
+        'name',
     ];
 
-    public function user()
+    public function person()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Person::class);
     }
 }
