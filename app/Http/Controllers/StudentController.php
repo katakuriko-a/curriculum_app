@@ -16,14 +16,14 @@ class StudentController extends Controller
         if (!empty($request)) {
             $search = $request->search;
             $students = Student::where('name', 'LIKE', '%' . $search . '%')
-                                ->Where('name', 'like', '%' . $request->name . '%')
-                                ->Where('age', 'like', '%' . $request->age . '%')
-                                ->Where('birth', 'like', '%' . $request->birth . '%')
-                                ->Where('tel', 'like', '%' . $request->tel . '%')
-                                ->Where('mail', 'like', '%' . $request->mail . '%')
-                                ->Where('plan', 'like', '%' . $request->plan . '%')
-                                ->OrderBy('created_at','desc')
-                                ->get();
+                ->Where('name', 'like', '%' . $request->name . '%')
+                ->Where('age', 'like', '%' . $request->age . '%')
+                ->Where('birth', 'like', '%' . $request->birth . '%')
+                ->Where('tel', 'like', '%' . $request->tel . '%')
+                ->Where('mail', 'like', '%' . $request->mail . '%')
+                ->Where('plan', 'like', '%' . $request->plan . '%')
+                ->OrderBy('created_at', 'desc')
+                ->get();
             return view('index')
                 ->with(['students' => $students])
                 ->with(['search' => $search]);
@@ -32,7 +32,6 @@ class StudentController extends Controller
             return view('index')
                 ->with(['students' => $students]);
         }
-
     }
 
 
@@ -89,5 +88,39 @@ class StudentController extends Controller
 
         return redirect()
             ->route('students.index');
+    }
+
+    public function csv(Request $request)
+    {
+        $students = Student::all();
+
+        $csvExporter = new \Laracsv\Export();
+
+        $csvExporter->build($students, [
+            'name' => 'ユーザー名',
+            'age' => '年齢',
+            'birth' => '生年月日',
+            'mail' => 'メールアドレス',
+            'tel' => '電話番号',
+            'plan' => 'プラン',
+            'created_at' => '登録日',
+        ]);
+
+        $csvReader = $csvExporter->getReader();
+
+        $csvReader->setOutputBOM(\League\Csv\Reader::BOM_UTF8);
+
+        $filename = $request->filename . '.csv';
+
+        return response((string) $csvReader)
+            ->header('Content-Type', 'text/csv; charset=UTF-8')
+            ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
+    }
+
+    public function test()
+    {
+        return response()->json([
+            'result' => 'Response from Laravel',
+        ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameTestsTable extends Migration
+class AddTeacherNameToReservesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class RenameTestsTable extends Migration
      */
     public function up()
     {
-        Schema::rename('tests', 'students');
+        Schema::table('reserves', function (Blueprint $table) {
+            //
+            $table->string('teacher_name');
+        });
     }
 
     /**
@@ -23,6 +26,8 @@ class RenameTestsTable extends Migration
      */
     public function down()
     {
-        Schema::rename('students', 'tests');
+        Schema::table('reserves', function (Blueprint $table) {
+            //
+        });
     }
 }

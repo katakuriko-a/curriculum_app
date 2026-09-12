@@ -7,6 +7,7 @@
         ESA ACADEMY 生徒管理システム
     </x-slot>
     <header>
+        <div id="csv" class="btn_option">csvダウンロード</div>
         <div class="search_wrapper">
             <form
                 class="search"
@@ -63,7 +64,16 @@
 
         </form>
       </div>
-
+      <div class="csv-downloader">
+        <form method="get" action="{{ route('students.csv') }}">
+            @csrf
+            <div class="back btn_option">←</div>
+            <div class="input_filename">
+                <input type="text" name="filename" placeholder="ファイル名"><span>.csv</span>
+            </div>
+            <input class="btn_option" type="submit" value="csv形式でファイルをダウンロード">
+        </form>
+    </div>
       <div class="main_wrapper">
           <p class="sum_number">15件</p>
           <div class="main_content">

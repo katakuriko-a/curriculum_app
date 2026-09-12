@@ -25,23 +25,38 @@
 
     const filterList = document.querySelector('.filter_list');
     const cover = document.querySelector('.cover');
+    const backs = document.querySelectorAll('.back')
+
 
     function closeList() {
         filterList.classList.remove('open');
         cover.classList.remove('show');
+        csv_d.classList.remove('popup');
     }
 
-    
+    backs.forEach((back) => {
+        back.addEventListener('click', () => {
+            closeList();
+        })
+    })
+
+
+
     document.querySelector('.filter').addEventListener('click', () => {
         filterList.classList.add('open');
         cover.classList.add('show');
-    })
-    document.querySelector('.back').addEventListener('click', () => {
-        closeList();
     })
     cover.addEventListener('click', () => {
         closeList();
     })
 
+    // csvダウンロードポップアップ表示
+    const csv_d = document.querySelector('.csv-downloader');
+
+    document.querySelector('#csv').addEventListener('click', () => {
+        cover.classList.add('show');
+        csv_d.classList.add('popup');
+
+    })
 }
 
